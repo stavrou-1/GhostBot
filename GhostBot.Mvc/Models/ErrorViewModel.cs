@@ -1,4 +1,4 @@
-namespace GhostBot.Models;
+namespace GhostBot.Mvc.Models;
 
 public class ErrorViewModel
 {
