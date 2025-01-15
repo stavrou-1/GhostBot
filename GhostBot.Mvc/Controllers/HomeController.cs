@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using GhostBot.Models;
+using GhostBot.Mvc.Models;
 
-namespace GhostBot.Controllers;
+namespace GhostBot.Mvc.Controllers;
 
 public class HomeController : Controller
 {
