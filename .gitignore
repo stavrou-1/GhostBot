@@ -1,0 +1,18 @@
+# IDE
+.suo
+*.suo
+*.user
+*.cache
+*.vscode
+
+GhostBot.Mvc/bin/*
+GhostBot.Mvc/obj/*
+GhostBot.Mvc/properties/*
+
+GhostBot.EntityModels/bin/*
+GhostBot.EntityModels/obj/*
+GhostBot.EntityModels/properties/*
+
+# db
+*.db
+*.log
