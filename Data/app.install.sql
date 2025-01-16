@@ -99,33 +99,6 @@ values
 ,""
 ,1);
 
-create table "Comment" (
-    "CommentId" integer primary key,
-    "Content" text not null,
-    "PersonId" integer null,
-    "ParentId" integer null,
-    "CategoryId" integer null,
-    "CreatedAt" "datetime" null,
-    "UpdatedAt" "datetime" null,
-    "DeletedAt" "datetime" null,
-    "CommentDate" "datetime" null,
-    "CommentReplies" nvarchar(50) null,
-    "Category" integer null ,
-    constraint "FK_Comment_Person" foreign key (
-        "PersonId"
-    ) references "Person" (
-        "PersonId"
-    ),
-    constraint "FK_Comment_Category" foreign key (
-        "CategoryId"
-    ) references "Category" (
-        "CategoryId"
-    )
-);
-
-
-
-
 insert into "Person"("FirstName","LastName","Avatar","Comments","Address"
 ,"City","Region","PostalCode","Country","AuthenticationLevel","IsSSO"
 ,"AnonymousPosts","EtherealThreads","Notes")
