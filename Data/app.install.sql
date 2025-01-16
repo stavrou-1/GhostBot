@@ -1,4 +1,6 @@
 drop table if exists "Person";
+drop table if exists "Comment";
+drop table if exists "Category";
 
 create table "Person" (
     "PersonId" integer primary key,
@@ -15,13 +17,13 @@ create table "Person" (
     "IsSSO" bit default 0,
     "AnonymousPosts" integer null, 
     "EtherealThreads" integer null,
-    "Notes" "ntext" null
+    "Notes" text null
 );
 
 create table "Comment" (
     "CommentId" integer primary key,
-    "Comment" "ntext" not null,
-    "PersonId" nchar (5) null,
+    "Content" text not null,
+    "PersonId" integer null,
     "ParentId" integer null,
     "CategoryId" integer null,
     "CreatedAt" "datetime" null,
@@ -45,12 +47,13 @@ create table "Comment" (
 create table "Category" (
     "CategoryId" integer primary key,
     "CategoryName" nvarchar(20) not null,
-    "Description" "ntext" null,
+    "Description" text null,
     "Picture" "image" null
 );
 
 create index "PersonId" on "Comment"("PersonId");
 create index "CategoryId" on "Category"("categoryId");
+create index "CommentId" on "Comment"("CommentId");
 
 insert into "Category"("CategoryName","Description","Picture") 
 values ("AI",null,null);
@@ -72,6 +75,55 @@ values ("Food",null,null);
 
 insert into "Category"("CategoryName","Description","Picture") 
 values ("Science",null,null);
+
+insert into "Comment"(
+    "Content",
+    "PersonId",
+    "ParentId",
+    "CategoryId",
+    "CreatedAt",
+    "UpdatedAt",
+    "DeletedAt",
+    "CommentDate",
+    "CommentReplies",
+    "Category")
+values
+("Test comment"
+,1
+,1    
+,1
+,date('now')
+,date('now')
+,date('now')
+,date('now')
+,""
+,1);
+
+create table "Comment" (
+    "CommentId" integer primary key,
+    "Content" text not null,
+    "PersonId" integer null,
+    "ParentId" integer null,
+    "CategoryId" integer null,
+    "CreatedAt" "datetime" null,
+    "UpdatedAt" "datetime" null,
+    "DeletedAt" "datetime" null,
+    "CommentDate" "datetime" null,
+    "CommentReplies" nvarchar(50) null,
+    "Category" integer null ,
+    constraint "FK_Comment_Person" foreign key (
+        "PersonId"
+    ) references "Person" (
+        "PersonId"
+    ),
+    constraint "FK_Comment_Category" foreign key (
+        "CategoryId"
+    ) references "Category" (
+        "CategoryId"
+    )
+);
+
+
 
 
 insert into "Person"("FirstName","LastName","Avatar","Comments","Address"
