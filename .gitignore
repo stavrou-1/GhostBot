@@ -13,6 +13,10 @@ GhostBot.EntityModels/bin/*
 GhostBot.EntityModels/obj/*
 GhostBot.EntityModels/properties/*
 
+GhostBot.DataContext/bin/*
+GhostBot.DataContext/obj/*
+GhostBot.DataContext/properties/*
+
 # db
 *.db
 *.log
