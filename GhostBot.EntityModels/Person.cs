@@ -1,33 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GhostBot.EntityModels {
-    public partial class Person {
-        public int PersonId { get; set; }
+namespace GhostBot.EntityModels;
 
-        [Column (TypeName = "nvarchar(50)")]
-        public string? FirstName { get; set; }
+public class Person
+{
+    [Key]
+    public int PersonId { get; set; }
 
-        [Column (TypeName = "nvarchar(50)")] 
-        public string? LastName { get; set; }
+    [Column(TypeName = "nvarchar(50)")]
+    public string FirstName { get; set; } = null!;
 
-        [NotMapped]
-        public byte Avatar { get; set; }
+    [Column(TypeName = "nvarchar(50)")]
+    public string LastName { get; set; } = null!;
 
-        [Column (TypeName = "nvarchar(50)")]
-        public string? Comments { get; set; }
+    [NotMapped]
+    [Column(TypeName = "image")]
+    public byte[]? Avatar { get; set; }
 
-        [Column (TypeName = "nvarchar(50)")]
-        public string? Address { get; set; }
+    [Column(TypeName = "nvarchar(50)")]
+    public string? Comments { get; set; }
 
-        [Column (TypeName = "nvarchar(50)")]
-        public string? City { get; set; }
-        public string? Region { get; set; }
-        public string? PostalCode { get; set; }
-        public string? Country { get; set; }
-        public string? AuthenticationLevel { get; set; }
-        public bool IsSSO { get; set; }
-        public int AnonymousPosts { get; set; }
-        public int EtherealThreads { get; set; }
-        public string? Notes { get; set; }
-    }
+    [Column(TypeName = "nvarchar(50)")]
+    public string? Address { get; set; }
+
+    [Column(TypeName = "nvarchar(50)")]
+    public string? City { get; set; }
+    public string? Region { get; set; }
+    public string? PostalCode { get; set; }
+    public string? Country { get; set; }
+    public string? AuthenticationLevel { get; set; }
+    public bool? IsSSO { get; set; }
+    public int? AnonymousPosts { get; set; }
+    public int? EtherealThreads { get; set; }
+    public string? Notes { get; set; }
 }
