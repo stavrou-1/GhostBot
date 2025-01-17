@@ -8,7 +8,10 @@ namespace GhostBot.EntityModels;
 public class Person
 {
     [Key]
-    public int PersonId { get; set; }
+    [Column(TypeName = "nchar (5)")]
+    [StringLength(5)]
+    [RegularExpression("[A-Z]{5}")]
+    public string PersonId { get; set; } = null!;
 
     [Column(TypeName = "nvarchar(50)")]
     public string FirstName { get; set; } = null!;

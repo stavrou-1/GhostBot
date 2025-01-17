@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Xml.Serialization;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -42,7 +41,13 @@ public class Comment
     public int? Category { get; set; }
     
     //One to Many
-    // public virtual ICollection<Category>? Categories { get; set; } = new HashSet<Category>();
+    // [ForeignKey("CategoryId")]
+    // [InverseProperty(nameof(Comment.Categories))]
+    // [XmlIgnore]
+    // public virtual ICollection<Category>? Categories { get; set; } = new List<Category>();
     //One to One
-    public virtual Person? Persons { get; set; } = null!;
+    // [ForeignKey("PersonId")]
+    // [InverseProperty(nameof(Comment.Person))]
+    // [XmlIgnore]
+    // public virtual Person? Person { get; set; } = null!;
 }   
