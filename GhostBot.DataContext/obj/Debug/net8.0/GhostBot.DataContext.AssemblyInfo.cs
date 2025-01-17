@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GhostBot.DataContext")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ba61a9947c2aad5446f9a8541d52a0d4c19bf698")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4001bb393e0dd766bba1977271e553ee76a46e35")]
 [assembly: System.Reflection.AssemblyProductAttribute("GhostBot.DataContext")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GhostBot.DataContext")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

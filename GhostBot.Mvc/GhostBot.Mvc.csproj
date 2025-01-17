@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Using Include="System.Console" static="true" />
+    <Using Include="System.Configuration"/>
   </ItemGroup>
 
   <ItemGroup>

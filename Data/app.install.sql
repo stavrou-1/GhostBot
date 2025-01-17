@@ -3,7 +3,7 @@ drop table if exists "Comment";
 drop table if exists "Category";
 
 create table "Person" (
-    "PersonId" integer primary key,
+    "PersonId" nchar (5) primary key,
     "FirstName" nvarchar (50) not null,
     "LastName" nvarchar (50) not null,
     "Avatar" "image" null,
