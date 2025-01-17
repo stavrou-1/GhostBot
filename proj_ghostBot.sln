@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GhostBot", "GhostBot\GhostBot.csproj", "{1167DF68-21F9-4343-90BB-02D2E6294FE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostBot.WebApi", "GhostBot.WebApi\GhostBot.WebApi.csproj", "{B8723AD6-4B1C-4FA8-B5AA-CDC9E4862391}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostBot.Mvc", "GhostBot.Mvc\GhostBot.Mvc.csproj", "{C8258DA2-7B07-4372-BEB7-E79E94E291BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostBot.DataContext", "GhostBot.DataContext\GhostBot.DataContext.csproj", "{8F8F63C6-7853-4713-B264-EA5356E4E9F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GhostBot.EntityModels", "GhostBot.EntityModels\GhostBot.EntityModels.csproj", "{DDA2E45A-0C85-4D88-B42E-56DF99D1B6CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,22 @@ Global
 		{1167DF68-21F9-4343-90BB-02D2E6294FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1167DF68-21F9-4343-90BB-02D2E6294FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1167DF68-21F9-4343-90BB-02D2E6294FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8723AD6-4B1C-4FA8-B5AA-CDC9E4862391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8723AD6-4B1C-4FA8-B5AA-CDC9E4862391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8723AD6-4B1C-4FA8-B5AA-CDC9E4862391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8723AD6-4B1C-4FA8-B5AA-CDC9E4862391}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8258DA2-7B07-4372-BEB7-E79E94E291BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8258DA2-7B07-4372-BEB7-E79E94E291BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8258DA2-7B07-4372-BEB7-E79E94E291BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8258DA2-7B07-4372-BEB7-E79E94E291BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8F63C6-7853-4713-B264-EA5356E4E9F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8F63C6-7853-4713-B264-EA5356E4E9F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8F63C6-7853-4713-B264-EA5356E4E9F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8F63C6-7853-4713-B264-EA5356E4E9F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDA2E45A-0C85-4D88-B42E-56DF99D1B6CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDA2E45A-0C85-4D88-B42E-56DF99D1B6CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDA2E45A-0C85-4D88-B42E-56DF99D1B6CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDA2E45A-0C85-4D88-B42E-56DF99D1B6CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

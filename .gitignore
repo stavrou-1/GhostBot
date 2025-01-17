@@ -8,6 +8,8 @@
 GhostBot.Mvc/bin/*
 GhostBot.Mvc/obj/*
 GhostBot.Mvc/properties/*
+GhostBot.Mvc/appsettings.Development.json
+GhostBot.Mvc/appsettings.json
 
 GhostBot.EntityModels/bin/*
 GhostBot.EntityModels/obj/*

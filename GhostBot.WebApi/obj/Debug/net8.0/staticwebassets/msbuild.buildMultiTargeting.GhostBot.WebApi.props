@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/GhostBot.WebApi.props" />
+</Project>
