@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GhostBot.WebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4001bb393e0dd766bba1977271e553ee76a46e35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dcb921bb89d7a1648ad2c45e8bf21eb41895a12")]
 [assembly: System.Reflection.AssemblyProductAttribute("GhostBot.WebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GhostBot.WebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

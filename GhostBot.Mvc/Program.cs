@@ -17,26 +17,26 @@ using GhostBot.EntityModels;
 
 // using GhostBotContext db = new GhostBotContext(connectionString);
 // WriteLine ($"Provider: {db.Database.ProviderName}");
-IQueryable<Category> ? categories = db.Category;
-if (categories is not null) {
-    foreach (Category c in categories) {
-        WriteLine ($"ID: {c.CategoryId}, Name: {c.CategoryName}");
-    }
-}
+// IQueryable<Category> ? categories = db.Category;
+// if (categories is not null) {
+//     foreach (Category c in categories) {
+//         WriteLine ($"ID: {c.CategoryId}, Name: {c.CategoryName}");
+//     }
+// }
 
-IQueryable<Person> ? persons = db.Person;
-if (persons is not null) {
-    foreach (Person c in persons) {
-        WriteLine ($"ID: {c.PersonId}, FirstName: {c.FirstName}, LastName: {c.LastName}");
-    }
-}
+// IQueryable<Person> ? persons = db.Person;
+// if (persons is not null) {
+//     foreach (Person c in persons) {
+//         WriteLine ($"ID: {c.PersonId}, FirstName: {c.FirstName}, LastName: {c.LastName}");
+//     }
+// }
 
-IQueryable<Comment> ? comments = db.Comment;
-if (comments is not null) {
-    foreach (Comment c in comments) {
-        WriteLine ($"ID: {c.CommentId}, Content: {c.Content}, PersonId: {c.PersonId}");
-    }
-}
+// IQueryable<Comment> ? comments = db.Comment;
+// if (comments is not null) {
+//     foreach (Comment c in comments) {
+//         WriteLine ($"ID: {c.CommentId}, Content: {c.Content}, PersonId: {c.PersonId}");
+//     }
+// }
 
 ReadLine ();
 #endregion  
