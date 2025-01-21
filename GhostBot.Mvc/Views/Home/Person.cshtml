@@ -1,0 +1,41 @@
+@using GhostBot.EntityModels
+@model IEnumerable<Person>
+
+<h2>@ViewData["Title"]</h2>
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Is SSO</th>
+        </tr>
+    </thead>x
+    <tbody>
+        @if (Model is not null)
+        {
+            @foreach (Person p in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => p.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => p.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => p.Address)
+                        @Html.DisplayFor(modelItem => p.City)
+                        @Html.DisplayFor(modelItem => p.Country)
+                        @Html.DisplayFor(modelItem => p.Region)
+                        @Html.DisplayFor(modelItem => p.Notes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => p.IsSSO)
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

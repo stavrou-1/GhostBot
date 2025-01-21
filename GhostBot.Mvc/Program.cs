@@ -1,55 +1,4 @@
-using System.Configuration;
-using System.Linq;
-using Autofac;
-using GhostBot.DataContext;
-using GhostBot.EntityModels;
-
-#region DB Context Setup
-// string projectPath = AppDomain.CurrentDomain.BaseDirectory.Split(new String[] { @"bin\" }, StringSplitOptions.None)[0];
-// IConfigurationRoot configuration = new ConfigurationBuilder()
-//     .SetBasePath(projectPath)
-//     .AddJsonFile("appsettings.json")
-//     .Build();
-// string connectionString = configuration.GetConnectionString("DefaultConnection");
-// //db context setup.
-// WriteLine (connectionString);
-// ReadLine ();
-
-// using GhostBotContext db = new GhostBotContext(connectionString);
-// WriteLine ($"Provider: {db.Database.ProviderName}");
-IQueryable<Category> ? categories = db.Category;
-if (categories is not null) {
-    foreach (Category c in categories) {
-        WriteLine ($"ID: {c.CategoryId}, Name: {c.CategoryName}");
-    }
-}
-
-IQueryable<Person> ? persons = db.Person;
-if (persons is not null) {
-    foreach (Person c in persons) {
-        WriteLine ($"ID: {c.PersonId}, FirstName: {c.FirstName}, LastName: {c.LastName}");
-    }
-}
-
-IQueryable<Comment> ? comments = db.Comment;
-if (comments is not null) {
-    foreach (Comment c in comments) {
-        WriteLine ($"ID: {c.CommentId}, Content: {c.Content}, PersonId: {c.PersonId}");
-    }
-}
-
-ReadLine ();
-#endregion  
-
-#region Dependency Injection Setup
-// ContainerBuilder containerBuilder = new ContainerBuilder ();
-// containerBuilder.RegisterType<SMSService>().As<IMobileService>();
-// containerBuilder.RegisterType<EmailService>().As<IMailService>();
-
-// IContainer container = containerBuilder.Build ();
-// container.Resolve<IMobileService>().Execute();
-// container.Resolve<IMobileService>().Execute();
-#endregion
+using System.Net.Http.Headers; // To use MediaTypeWithQualityHeaderValue.
 
 #region Configure the web server host and services
 var builder = WebApplication.CreateBuilder (args);
@@ -61,7 +10,18 @@ builder.Services.AddControllersWithViews ();
 #endregion
 
 #region Configure HTTP Pipeline and Middleware
-var app = builder.Build ();
+
+builder.Services.AddHttpClient(name: "GhostBot.WebApi",
+configureClient: options => 
+{
+    options.BaseAddress = new Uri("https://localhost:5019/");
+    options.DefaultRequestHeaders.Accept.Add(
+        new MediaTypeWithQualityHeaderValue(
+            mediaType: "application/json", quality: 1.0
+        ));
+});
+
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment ()) {
     app.UseExceptionHandler ("/Home/Error");
