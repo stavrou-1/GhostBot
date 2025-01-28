@@ -8,8 +8,15 @@
 </div>
 
 <h3>persons from a service</h3>
-<form asp-action="Persons" method="get">
+<form asp-action="Person" method="get">
     <input name="city" placeholder="Enter a city" />
+    <input type="submit" />
+</form>
+
+<h3>Create a persons from a service</h3>
+<form asp-action="Create" method="post">
+    <input name="LastName" placeholder="First Name" type="text" /><br>
+    <input name="FirstName" placeholder="Last Name" type="text" /><br/>
     <input type="submit" />
 </form>
 
