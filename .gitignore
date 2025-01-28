@@ -1,34 +1,18 @@
-# IDE
+
 .suo
 *.suo
 *.user
 *.cache
 *.vscode
+*.git
 
 .DS_Store
 
-GhostBot.Mvc/bin/*
-GhostBot.Mvc/obj/*
-GhostBot.Mvc/properties/*
-GhostBot.Mvc/appsettings.Development.json
-GhostBot.Mvc/appsettings.json
+*/properties/*
+*/bin/*
+*/obj/*
+*/appsettings.Development.json
+*/appsettings.json
 
-GhostBot.EntityModels/bin/*
-GhostBot.EntityModels/obj/*
-GhostBot.EntityModels/properties/*
-
-GhostBot.DataContext/bin/*
-GhostBot.DataContext/obj/*
-GhostBot.DataContext/properties/*
-
-
-GhostBot.WebApi/bin/*
-GhostBot.WebApi/obj/*
-GhostBot.WebApi/properties/*
-GhostBot.WebApi/appsettings.Development.json
-GhostBot.WebApi/appsettings.json
-
-
-# db
 *.db
 *.log

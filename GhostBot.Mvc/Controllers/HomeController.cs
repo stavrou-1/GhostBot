@@ -3,64 +3,95 @@ using GhostBot.DataContext;
 using GhostBot.EntityModels;
 using GhostBot.Mvc.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-namespace GhostBot.Mvc.Controllers;
-
-public class HomeController : Controller
+namespace GhostBot.Mvc.Controllers
 {
-    private readonly ILogger<HomeController> _logger;
-    private readonly GhostBotContext _db;
-    private readonly IHttpClientFactory _clientFactory;
-
-    public HomeController(
-        ILogger<HomeController> logger,
-        GhostBotContext db,
-        IHttpClientFactory httpClientFactory)
+    public class HomeController : Controller
     {
-        _logger = logger;
-        _db = db;
-        _clientFactory = httpClientFactory;
-    }
+        private readonly ILogger<HomeController> _logger;
+        // private readonly GhostBotContext _db;
+        private readonly IHttpClientFactory _clientFactory;
 
-    public async Task<IActionResult> Persons(string city)
-    {
-        string uri;
-        if (string.IsNullOrEmpty(city))
+        public HomeController(
+            ILogger<HomeController> logger,
+            // GhostBotContext db,
+            IHttpClientFactory httpClientFactory)
         {
-            ViewData["Title"] = "All Customers WorldWide";
-            uri = "api/person";
-        } 
-        else
-        {
-            ViewData["Title"] = $"Customers in {city}";
-            uri = $"api/person/?city={city}";
+            _logger = logger;
+            // _db = db;
+            _clientFactory = httpClientFactory;
         }
 
-        HttpClient client = _clientFactory.CreateClient(
+        [HttpPost]
+        public async Task<IActionResult> Create(Person p)
+        {
+            HttpClient client = _clientFactory.CreateClient(
             name: "GhostBot.WebApi");
-        HttpRequestMessage request = new (
-            method: HttpMethod.Get, requestUri: uri);
-        HttpResponseMessage response = await client.SendAsync(request);
 
-        IEnumerable<Person>? model = await response.Content
-            .ReadFromJsonAsync<IEnumerable<Person>>();
+            HttpResponseMessage response = await client.PostAsJsonAsync(
+                requestUri: "api/person", value: p);
 
-        return View(model);
-    }
+            // Optionally, get the created customer back as JSON
+            // so the user can see the assigned ID, for example.
+            Person? model = await response.Content
+                .ReadFromJsonAsync<Person>();
 
-    public IActionResult Index()
-    {
-        return View();
-    }
+            if (response.IsSuccessStatusCode)
+            {
+                TempData["success-message"] = "Person successfully added.";
+            }
+            else
+            {
+                TempData["error-message"] = "Person was NOT added.";
+            }
 
-    public IActionResult Privacy()
-    {
-        return View();
-    }
+            // Show the full Persons list to see if it was added.
+            return RedirectToAction("Person");
+        }
 
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        public async Task<IActionResult> Person(string city)
+        {
+            string uri;
+            if (string.IsNullOrEmpty(city))
+            {
+                ViewData["Title"] = "All Customers WorldWide";
+                uri = "api/person";
+            } 
+            else
+            {
+                ViewData["Title"] = $"Customers in {city}";
+                uri = $"api/person/?city={city}";
+            }
+
+            HttpClient client = _clientFactory.CreateClient(
+                name: "GhostBot.WebApi");
+            
+            HttpRequestMessage request = new (
+                method: HttpMethod.Get, requestUri: uri);
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            IEnumerable<Person>? model = await response.Content
+                .ReadFromJsonAsync<IEnumerable<Person>>();
+
+            return View(model);
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
     }
 }

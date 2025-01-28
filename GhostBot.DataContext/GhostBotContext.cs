@@ -8,7 +8,10 @@ namespace GhostBot.DataContext {
     {
         public GhostBotContext () { }
 
-        public GhostBotContext(DbContextOptions<GhostBotContext> options) : base (options) { }
+        public GhostBotContext(DbContextOptions<GhostBotContext> options) 
+            : base (options) 
+        { 
+        }
 
         public virtual DbSet<Person>? Person { get; set; }
         public virtual DbSet<Comment>? Comment { get; set; }

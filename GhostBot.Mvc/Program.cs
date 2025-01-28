@@ -14,7 +14,7 @@ builder.Services.AddControllersWithViews ();
 builder.Services.AddHttpClient(name: "GhostBot.WebApi",
 configureClient: options => 
 {
-    options.BaseAddress = new Uri("https://localhost:5019/");
+    options.BaseAddress = new Uri("http://localhost:5019/");
     options.DefaultRequestHeaders.Accept.Add(
         new MediaTypeWithQualityHeaderValue(
             mediaType: "application/json", quality: 1.0
