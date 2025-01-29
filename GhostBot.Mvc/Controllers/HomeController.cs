@@ -10,16 +10,16 @@ namespace GhostBot.Mvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        // private readonly GhostBotContext _db;
+        private readonly GhostBotContext _db;
         private readonly IHttpClientFactory _clientFactory;
 
         public HomeController(
             ILogger<HomeController> logger,
-            // GhostBotContext db,
+            GhostBotContext db,
             IHttpClientFactory httpClientFactory)
         {
             _logger = logger;
-            // _db = db;
+            _db = db;
             _clientFactory = httpClientFactory;
         }
 
@@ -34,8 +34,7 @@ namespace GhostBot.Mvc.Controllers
 
             // Optionally, get the created customer back as JSON
             // so the user can see the assigned ID, for example.
-            Person? model = await response.Content
-                .ReadFromJsonAsync<Person>();
+            Person? model = await response.Content.ReadFromJsonAsync<Person>();
 
             if (response.IsSuccessStatusCode)
             {
@@ -78,9 +77,18 @@ namespace GhostBot.Mvc.Controllers
             return View(model);
         }
 
-        public IActionResult Index()
+        [ResponseCache(Duration = 10, Location = ResponseCacheLocation.Any)]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // return View();
+            _logger.LogInformation("Index method return comments and categories.");
+
+            HomeIndexViewModel model = new
+            (
+                Comments: await _db.Comments!.ToListAsync(),
+                Categories: await _db.Categories!.ToListAsync()
+            );
+            return View(model); // Pass the model to the view.
         }
 
         public IActionResult Privacy()

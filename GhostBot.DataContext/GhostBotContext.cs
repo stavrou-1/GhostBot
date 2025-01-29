@@ -13,9 +13,9 @@ namespace GhostBot.DataContext {
         { 
         }
 
-        public virtual DbSet<Person>? Person { get; set; }
-        public virtual DbSet<Comment>? Comment { get; set; }
-        public virtual DbSet<Category>? Category { get; set; }
+        public virtual DbSet<Person> Persons { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {

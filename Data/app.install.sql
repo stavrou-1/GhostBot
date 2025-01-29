@@ -1,8 +1,8 @@
-drop table if exists "Person";
-drop table if exists "Comment";
-drop table if exists "Category";
+drop table if exists "Persons";
+drop table if exists "Comments";
+drop table if exists "Categories";
 
-create table "Person" (
+create table "Persons" (
     "PersonId" nchar (5) primary key,
     "FirstName" nvarchar (50) not null,
     "LastName" nvarchar (50) not null,
@@ -20,7 +20,7 @@ create table "Person" (
     "Notes" text null
 );
 
-create table "Comment" (
+create table "Comments" (
     "CommentId" integer primary key,
     "Content" text not null,
     "PersonId" integer null,
@@ -44,39 +44,39 @@ create table "Comment" (
     )
 );
 
-create table "Category" (
+create table "Categories" (
     "CategoryId" integer primary key,
     "CategoryName" nvarchar(20) not null,
     "Description" text null,
     "Picture" "image" null
 );
 
-create index "PersonId" on "Comment"("PersonId");
-create index "CategoryId" on "Category"("categoryId");
-create index "CommentId" on "Comment"("CommentId");
+create index "PersonId" on "Comments"("PersonId");
+create index "CategoryId" on "Categories"("categoryId");
+create index "CommentId" on "Comments"("CommentId");
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("AI",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Politics",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Sports",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Engineering",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Philosophy",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Food",null,null);
 
-insert into "Category"("CategoryName","Description","Picture") 
+insert into "Categories"("CategoryName","Description","Picture") 
 values ("Science",null,null);
 
-insert into "Comment"(
+insert into "Comments"(
     "Content",
     "PersonId",
     "ParentId",
@@ -99,7 +99,7 @@ values
 ,""
 ,1);
 
-insert into "Person"("FirstName","LastName","Avatar","Comments","Address"
+insert into "Persons"("FirstName","LastName","Avatar","Comments","Address"
 ,"City","Region","PostalCode","Country","AuthenticationLevel","IsSSO"
 ,"AnonymousPosts","EtherealThreads","Notes")
 values
@@ -119,7 +119,7 @@ values
 ,null);
 
 
-insert into "Person"("FirstName","LastName","Avatar","Comments","Address"
+insert into "Persons"("FirstName","LastName","Avatar","Comments","Address"
 ,"City","Region","PostalCode","Country","AuthenticationLevel","IsSSO"
 ,"AnonymousPosts","EtherealThreads","Notes")
 values
