@@ -1,19 +1,35 @@
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using GhostBot.EntityModels;
+using GhostBot.DataContext;
 using System.Net.Http.Headers; // To use MediaTypeWithQualityHeaderValue.
+using System.Net;
+using GhostBot.Mvc.Data;
 
 #region Configure the web server host and services
 var builder = WebApplication.CreateBuilder (args);
 
 // Add services to the container.
-var connectionString = builder.Configuration.GetConnectionString ("DefaultConnection") ?? "";
-builder.Services.AddRazorPages ();
-builder.Services.AddControllersWithViews ();
+var connectionString = builder.Configuration
+    .GetConnectionString ("DefaultConnection") ??
+        throw new InvalidOperationException(
+            "Connection string 'DefaultConnection' not found.");
+    
+builder.Services.AddDbContext<ApplicationDbContext>(options => 
+    options.UseSqlite(connectionString)
+);
+builder.Services.AddRazorPages();
+builder.Services.AddControllersWithViews();
+builder.Services.AddGhostBotContext();
+//if you are using sqlite, de
 #endregion
 
 #region Configure HTTP Pipeline and Middleware
-
 builder.Services.AddHttpClient(name: "GhostBot.WebApi",
 configureClient: options => 
 {
+    options.DefaultRequestVersion = HttpVersion.Version30;
+    options.DefaultVersionPolicy = HttpVersionPolicy.RequestVersionExact;
     options.BaseAddress = new Uri("http://localhost:5019/");
     options.DefaultRequestHeaders.Accept.Add(
         new MediaTypeWithQualityHeaderValue(

@@ -29,7 +29,7 @@ namespace GhostBot.WebApi.Repositories
             p.PersonId = p.PersonId.ToUpper(); //Normalize to uppercase
 
             //Add to database using EF Core.
-            EntityEntry<Person> added = await _db.Person!.AddAsync(p);
+            EntityEntry<Person> added = await _db.Persons!.AddAsync(p);
             int affected = await _db.SaveChangesAsync();
 
             if (affected == 1)
@@ -46,12 +46,12 @@ namespace GhostBot.WebApi.Repositories
         {
             id = id.ToUpper();
 
-            Person? p = await _db.Person!.FindAsync(id);
+            Person? p = await _db.Persons!.FindAsync(id);
             if (p is null) {
                 return null;
             }
 
-            _db.Person.Remove(p);
+            _db.Persons.Remove(p);
             int affected = await _db.SaveChangesAsync();
             if (affected == 1)
             {
@@ -63,7 +63,7 @@ namespace GhostBot.WebApi.Repositories
 
         public Task<Person[]> RetrieveAllAsync()
         {
-            return _db.Person!.ToArrayAsync();
+            return _db.Persons!.ToArrayAsync();
         }
 
         public Task<Person?> RetrieveAsync(string id)
@@ -77,7 +77,7 @@ namespace GhostBot.WebApi.Repositories
             }
 
             //If not in the cache, then try to get it from the database.
-            Person? fromDb = _db.Person!.FirstOrDefault(p => p.PersonId == id);
+            Person? fromDb = _db.Persons!.FirstOrDefault(p => p.PersonId == id);
 
             //If not -in db then return null result.
             if (fromDb is null) return Task.FromResult(fromDb);
@@ -91,7 +91,7 @@ namespace GhostBot.WebApi.Repositories
         {
             p.PersonId = p.PersonId.ToUpper();
 
-            _db.Person!.Update(p);
+            _db.Persons!.Update(p);
             int affected = await _db.SaveChangesAsync();
             if (affected == 1)
             {
