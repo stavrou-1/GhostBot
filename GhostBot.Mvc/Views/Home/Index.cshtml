@@ -1,22 +1,48 @@
-﻿@{
+﻿@using GhostBot.EntityModels
+@model HomeIndexViewModel
+@{
     ViewData["Title"] = "Home Page";
+    ViewData["WelcomeTitle"] = "Welcome to your Ghostly Resource. More to come...";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to your Ghostly Resource!</h1>
+    <h1 class="display-4">@ViewData["WelcomeTitle"]</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p class="alert alert-primary" href="javascript:void(0);">@DateTime.Now.ToLongTimeString()</p>
 </div>
 
-<h3>persons from a service</h3>
 <form asp-action="Person" method="get">
     <input name="city" placeholder="Enter a city" />
     <input type="submit" />
 </form>
 
+@if (Model is not null)
+{
+    <h2>Comments:</h2>
+    @foreach (Comment comment in Model.Comments)
+    {
+        <p>@comment.CommentId</p>
+        <p>@comment.CommentDate</p>
+        <p>@comment.Content</p>
+    }
+}
+<div class="text-center">
+    <p>Create Comment:</p>
+    <button asp-controller="Home" asp-action="Comments" asp-area="" class="alert alert-primary">Comments</button>
+</div>
+
+@*
+
+<h3>persons from a service</h3>
+
 <h3>Create a persons from a service</h3>
 <form asp-action="Create" method="post">
-    <input name="LastName" placeholder="First Name" type="text" /><br>
-    <input name="FirstName" placeholder="Last Name" type="text" /><br/>
+    <input name="FirstName" asp-for="FirstName" placeholder="First Name" type="text" /><br>
+    <input name="LastName" asp-for="LastName" placeholder="Last Name" type="text" /><br>
+    <input name="Address" asp-for="Address" placeholder="Address" type="text" /><br>
+    <input name="City" asp-for="City" placeholder="City" type="text" /><br>
+    <input name="Region" asp-for="Region" placeholder="Region" type="text" /><br>
+    <input name="IsSSO" asp-for="IsSSO" placeholder="IsSSO" type="text" /><br>
     <input type="submit" />
-</form>
+</form> *@
 
